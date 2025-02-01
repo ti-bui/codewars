@@ -7,7 +7,8 @@
 #   Empty input array of numbers -> numbers <= 0
 #   Invalid page length -> page_length <= 0
 #   Invalid page number -> page_number <= 0
-#   Page number beyond the available pages -> page_number > total pages (use mod to wrap back to valid pages)
+#   Page number beyond the available pages -> page_number > total pages or start_idx >= array length
+#               ->(use mod solution to wrap back to valid pages)
 
 def pagination(numbers, page_length, page_number):
     if not numbers or page_length <= 0 or page_number <= 0:
@@ -25,8 +26,9 @@ def pagination(numbers, page_length, page_number):
 numbers = [1, 7, 5, 2, 3, 4, 9, 8]
 
 # Example test case:
-#           numbers = [1,7,5,2,3,4,9,8]
-#                        p1  p2  p3  p4
+#               idx   0  1  2  3  4  5  6  7
+#          numbers = [1, 7, 5, 2, 3, 4, 9, 8]
+#                        p1    p2    p3    p4
 # pagination(numbers, 2, 4) -> result: [9,8]
 # pagination(numbers, 2, 10) -> result: []
 print("1st SOLUTION")
@@ -52,7 +54,8 @@ print("2nd SOLUTION")
 print(pagination_mod(numbers, 2, 4))
 print(pagination_mod(numbers, 2, 10))
 # Example test case:
-#           numbers = [1,7,5,2,3,4,9,8]
-#                        p1  p2  p3  p4
+#               idx   0  1  2  3  4  5  6  7
+#          numbers = [1, 7, 5, 2, 3, 4, 9, 8]
+#                        p1    p2    p3    p4
 # pagination(numbers, 2, 4) -> result: [9,8]
 # pagination(numbers, 2, 10) -> result: [5,2]
